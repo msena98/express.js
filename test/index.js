@@ -16,7 +16,7 @@ app.get("/blog", function(req, res){
 });
 
 app.get("/ola/:nome/:cargo", function(req, res){
-    res.send("<h1>Ola "+req.params.nome+"!</h1>");
+    res.send("<h1>Ola "+req.params.nome+"!</h1>"+"<h2>Seu cargo e: "+req.params.cargo+"</h2>");
 });
 
 
