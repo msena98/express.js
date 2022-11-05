@@ -22,7 +22,7 @@ const Sequelize = require('sequelize')
     })
 
     app.post('/add', function(req,res){
-        res.send('Formulario recebido!')
+        res.send(`Titulo: ${req.body.titulo} Conteudo: ${req.body.conteudo}`)
     })
 
 app.listen(8081, function(){
