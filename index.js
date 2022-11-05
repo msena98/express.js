@@ -14,7 +14,11 @@ const Sequelize = require('sequelize');
         }) 
 // Rotas
     app.get('/cad', function(req,res){
-        res.send('Rota de cadastros de POSTS');
+        res.render('formulario')
+    })
+
+    app.post('/add', function(req,res){
+        res.send('Formulario recebido!')
     })
 
 app.listen(8081, function(){
