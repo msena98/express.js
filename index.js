@@ -6,18 +6,23 @@ const Post = require('./models/Post')
 
 // Config
     // Template Engine
-        app.engine('handlebars', handlebars.engine({defaultLayout: 'main'}))
-        app.set('view engine', 'handlebars')
+    app.engine('handlebars',handlebars.engine({defautLayout: 'main',
+    runtimeOptions: {
+        allowProtoPropertiesByDefault: true,
+        allowProtoMethodsByDefault: true,
+    }}))
+    app.set('view engine', 'handlebars')
     //Body Parser
         app.use(bodyParser.urlencoded({extended: false}))
         app.use(bodyParser.json());
 // Rotas
+    app.get('/', function(req,res){
+        Post.findAll().then(function(posts){
+            res.render('home', {posts: posts});
+        })
+    })
     app.get('/cad', function(req,res){
         res.render('formulario')
-    })
-
-    app.get('/', function(req,res){
-        res.render('home');
     })
 
     app.post('/add', function(req,res){
