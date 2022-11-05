@@ -16,12 +16,16 @@ const Post = require('./models/Post')
         res.render('formulario')
     })
 
+    app.get('/', function(req,res){
+        res.render('home');
+    })
+
     app.post('/add', function(req,res){
         Post.create({
             titulo: req.body.titulo,
             conteudo: req.body.conteudo
         }).then(function(){
-            res.send("Post criado com sucesso!")
+            res.redirect(('/'))
         }).catch(function(erro){
             res.send(`Houve um erro: ${erro}`)
         })
